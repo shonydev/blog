@@ -1,5 +1,5 @@
 import { ArrowRight, ArrowUpRight, Bookmark, Check, Clock3, Leaf, Menu, Share2, Sparkles, X } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const articleSections = [
   { id: 'origen', label: 'Un arte de observar' },
@@ -8,8 +8,34 @@ const articleSections = [
   { id: 'casa', label: 'Empezar por casa' },
 ]
 
+type InstallPromptEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }> }
+
 function App() {
   const [saved, setSaved] = useState(false)
+  const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null)
+  const [isOffline, setIsOffline] = useState(!navigator.onLine)
+  useEffect(() => {
+    const install = (event: Event) => { event.preventDefault(); setInstallPrompt(event as InstallPromptEvent) }
+    const installed = () => setInstallPrompt(null)
+    const online = () => setIsOffline(false)
+    const offline = () => setIsOffline(true)
+    window.addEventListener('beforeinstallprompt', install)
+    window.addEventListener('appinstalled', installed)
+    window.addEventListener('online', online)
+    window.addEventListener('offline', offline)
+    return () => {
+      window.removeEventListener('beforeinstallprompt', install)
+      window.removeEventListener('appinstalled', installed)
+      window.removeEventListener('online', online)
+      window.removeEventListener('offline', offline)
+    }
+  }, [])
+  const installApp = async () => {
+    if (!installPrompt) return
+    await installPrompt.prompt()
+    await installPrompt.userChoice
+    setInstallPrompt(null)
+  }
   const [menuOpen, setMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -29,6 +55,7 @@ function App() {
         Un espacio para las ideas que hacen bien
       </div>
 
+      {isOffline && <div role="status" className="bg-[#e8e4d8] px-5 py-2 text-center text-xs text-[#52634f]">Estás sin conexión. shon sigue disponible con el contenido guardado.</div>}
       <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-10">
         <a href="#inicio" className="group flex items-center gap-3" aria-label="shon, inicio">
           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#8c9b80]/60 text-[#64785f]"><Leaf size={19} strokeWidth={1.5} /></span>
@@ -44,12 +71,8 @@ function App() {
           <a className="transition hover:text-[#9a6f50]" href="#newsletter">Newsletter</a>
         </nav>
 
-        <button onClick={() => setMenuOpen(!menuOpen)} className="rounded-full border border-[#26352c]/15 p-2.5 md:hidden" aria-label="Abrir menú">
-          {menuOpen ? <X size={18} /> : <Menu size={18} />}
-        </button>
-        <a href="#articulo" className="hidden items-center gap-2 rounded-full bg-[#34483a] px-5 py-3 text-[10px] font-semibold uppercase tracking-[.14em] text-white transition hover:bg-[#53684f] md:flex">
-          Leer artículo <ArrowUpRight size={14} />
-        </a>
+        <div className="flex items-center gap-2 md:hidden">{installPrompt && <button onClick={installApp} className="rounded-full border border-[#71816a] px-3 py-2 text-[9px] font-semibold uppercase tracking-wider text-[#435641]">Instalar</button>}<button onClick={() => setMenuOpen(!menuOpen)} className="rounded-full border border-[#26352c]/15 p-2.5" aria-label="Abrir menú">{menuOpen ? <X size={18} /> : <Menu size={18} />}</button></div>
+        <div className="hidden items-center gap-3 md:flex">{installPrompt && <button onClick={installApp} className="rounded-full border border-[#71816a] px-4 py-3 text-[10px] font-semibold uppercase tracking-wider text-[#435641]">Instalar shon</button>}<a href="#articulo" className="flex items-center gap-2 rounded-full bg-[#34483a] px-5 py-3 text-[10px] font-semibold uppercase tracking-[.14em] text-white transition hover:bg-[#53684f]">Leer artículo <ArrowUpRight size={14} /></a></div>
       </header>
 
       {menuOpen && (
