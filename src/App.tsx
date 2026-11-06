@@ -30,10 +30,10 @@ function App() {
       </div>
 
       <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-10">
-        <a href="#inicio" className="group flex items-center gap-3" aria-label="Umbral, inicio">
+        <a href="#inicio" className="group flex items-center gap-3" aria-label="shon, inicio">
           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#8c9b80]/60 text-[#64785f]"><Leaf size={19} strokeWidth={1.5} /></span>
           <span>
-            <span className="font-editorial block text-[25px] leading-none tracking-tight">umbral<span className="text-[#9a6f50]">.</span></span>
+            <span className="font-editorial block text-[25px] leading-none tracking-tight">shon<span className="text-[#9a6f50]">.</span></span>
             <span className="mt-1 block text-[8px] uppercase tracking-[.25em] text-[#7e857a]">Ideas para habitar mejor</span>
           </span>
         </a>
@@ -210,7 +210,7 @@ function App() {
         <section id="filosofia" className="bg-[#34483a] px-6 py-20 text-[#f1efe7] md:px-10 md:py-28">
           <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[.8fr_1.2fr] md:items-center">
             <div>
-              <p className="mb-5 text-[9px] uppercase tracking-[.25em] text-[#c5b69e]">La filosofía de Umbral</p>
+              <p className="mb-5 text-[9px] uppercase tracking-[.25em] text-[#c5b69e]">La filosofía de shon</p>
               <h2 className="font-editorial text-4xl leading-tight tracking-tight md:text-5xl">Menos ruido.<br /><em className="font-normal text-[#c5b69e]">Más sentido.</em></h2>
             </div>
             <div className="max-w-xl md:justify-self-end">
@@ -233,7 +233,7 @@ function App() {
 
       <footer className="border-t border-[#26352c]/10 px-6 py-7 md:px-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
-          <span className="font-editorial text-xl tracking-tight">umbral<span className="text-[#9a765a]">.</span></span>
+          <span className="font-editorial text-xl tracking-tight">shon<span className="text-[#9a765a]">.</span></span>
           <p className="text-[9px] uppercase tracking-[.16em] text-[#9a9d91]">Ideas para habitar mejor · 2026</p>
           <a href="#inicio" className="flex items-center gap-2 text-[9px] uppercase tracking-[.16em] text-[#71816a] hover:text-[#9a765a]">Volver arriba <ArrowUpRight size={12} /></a>
         </div>
