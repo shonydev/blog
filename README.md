@@ -1,6 +1,8 @@
-# Umbral
+# shon
 
-Blog editorial desarrollado con React, TypeScript, Vite y Tailwind CSS.
+Blog editorial sobre diseño, cultura y bienestar cotidiano.
+
+🌐 **Visitá el blog:** https://shonydev.github.io/blog/
 
 ## Requisitos
 
