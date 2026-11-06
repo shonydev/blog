@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Bookmark, Check, Clock3, Leaf, Menu, Share2, Sparkles, X } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Bookmark, Check, Clock3, Leaf, Menu, Share2, Sparkles, X } from 'lucide-react'
 import { useState } from 'react'
 
 const articleSections = [
