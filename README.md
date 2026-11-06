@@ -32,3 +32,13 @@ npm run preview
 - Lucide React
 
 El primer artículo es una introducción al Feng Shui desde una perspectiva cultural y de diseño cotidiano.
+
+## Aplicación web progresiva (PWA)
+
+shon puede instalarse en dispositivos compatibles y conserva la aplicación para abrirla sin conexión después de la primera visita online.
+
+- El service worker precarga la estructura principal y guarda en caché los recursos visitados.
+- En navegadores compatibles aparece la opción **Instalar shon**.
+- En iPhone y iPad: abrí el sitio en Safari, tocá **Compartir** y elegí **Agregar a pantalla de inicio**.
+
+Sitio: https://shonydev.github.io/blog/
