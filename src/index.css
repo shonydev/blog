@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #26352c;
+  background: #f5f2eb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  scroll-behavior: smooth;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: #d6dfcc; color: #26352c; }
+
+.font-editorial { font-family: 'Playfair Display', Georgia, serif; }
+
+.article-copy p {
+  margin: 0 0 1.45rem;
+  color: #59645b;
+  font-size: 1.04rem;
+  line-height: 1.95;
+}
+.article-copy h2 {
+  margin: 3rem 0 1rem;
+  color: #26352c;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.65rem, 3vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+.article-copy blockquote {
+  margin: 2.5rem 0;
+  border-left: 2px solid #a7b69b;
+  padding: .25rem 0 .25rem 1.5rem;
+  color: #52634f;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.6;
+}
+.article-copy strong { color: #344438; font-weight: 600; }
